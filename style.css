@@ -49,6 +49,21 @@ body {
   cursor: none;
 }
 
+#restart {
+  display: none;
+  border: none;
+  position: absolute;
+  color: black;
+  font-size: 1.5rem;
+  top: 57%;
+  background-color: #FAF9F6;
+  outline-width: 2px;
+  outline-style: solid;
+  border-radius: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
 .instructions {
   position: absolute;
   top: 50%;

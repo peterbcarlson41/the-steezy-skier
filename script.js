@@ -117,5 +117,7 @@ function endGame() {
   gameOver = true;
   const gameContainer = document.getElementById("inGame");
   gameContainer.remove();
+  const restartButton = document.getElementById("restart");
+  restartButton.style.display = "block"
 }
 
