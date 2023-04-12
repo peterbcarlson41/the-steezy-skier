@@ -66,6 +66,8 @@ body {
 
 .instructions {
   position: absolute;
+  max-width: 300px;
+  text-align: center;
   top: 50%;
   z-index: 2;
   cursor: none;
