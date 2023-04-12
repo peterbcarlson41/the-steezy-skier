@@ -2,11 +2,14 @@ const game = document.getElementById('game');
 const skier = document.getElementById('skier');
 let counter = 0;
 let blue = true;
+let gameOver = false;
 const initialAnimationDuration = 3; // seconds
 let started = false;
 
 //set score to 0 intitially
-document.getElementById("scoreSpan").innerHTML = Math.floor(counter);
+if (!gameOver) {
+  document.getElementById("scoreSpan").innerHTML = Math.floor(counter);
+}
 
 game.addEventListener('mousemove', (event) => {
   const gameRect = game.getBoundingClientRect();
@@ -28,22 +31,18 @@ function checkCollision() {
     if (skierRect.bottom >= gateRect.top && skierRect.top <= gateRect.bottom &&
         skierRect.right >= gateRect.left && skierRect.left <= gateRect.right) {
       // handle collision here, such as game over or score increment
-      // alert("You hit a gate. score: "+Math.floor(counter));
-      counter=0;
+      endGame();
     }
     else {
       if (gate.style.backgroundColor == "red") {
         if (skierRect.bottom >= gateRect.top && skierRect.left <= gateRect.right && skierRect.top <= gateRect.bottom) {
-          // alert("You missed a red gate. score: "+ Math.floor(counter));
-          //insert game end function
-          counter=0;
+          endGame();
         }
       }
       if (gate.style.backgroundColor == "blue"){
         //if the gate is blue, the skier should be on the left side of the gate before the top of the gate passes the bottom of the skier
         if (skierRect.bottom >= gateRect.top && skierRect.right >= gateRect.left && skierRect.top <= gateRect.bottom) {
-          // alert("You missed a blue gate. score: "+Math.floor(counter));
-          counter=0;
+          endGame();
         }
       }
     }
@@ -76,7 +75,6 @@ function createGate() {
   });
 
   // Decrease the animation duration after every gate is created, only to a point
-  console.log(currentAnimationDuration);
   if (currentAnimationDuration >= 1) {
     currentAnimationDuration -= 0.01;
   } 
@@ -110,5 +108,12 @@ function gameLoop() {
   }
 
   //else do nothing and let the game run
+}
+
+//end of game functionality
+function endGame() {
+  gameOver = true;
+  const gameContainer = document.getElementById("inGame");
+  gameContainer.remove();
 }
 
