@@ -3,6 +3,7 @@ const skier = document.getElementById('skier');
 let counter = 0;
 let blue = true;
 const initialAnimationDuration = 3; // seconds
+let started = false;
 
 //set score to 0 intitially
 document.getElementById("scoreSpan").innerHTML = Math.floor(counter);
@@ -33,14 +34,15 @@ function checkCollision() {
     else {
       if (gate.style.backgroundColor == "red") {
         if (skierRect.bottom >= gateRect.top && skierRect.left <= gateRect.right && skierRect.top <= gateRect.bottom) {
-          alert("You missed a red gate. score: "+ Math.floor(counter));
+          // alert("You missed a red gate. score: "+ Math.floor(counter));
+          //insert game end function
           counter=0;
         }
       }
       if (gate.style.backgroundColor == "blue"){
         //if the gate is blue, the skier should be on the left side of the gate before the top of the gate passes the bottom of the skier
         if (skierRect.bottom >= gateRect.top && skierRect.right >= gateRect.left && skierRect.top <= gateRect.bottom) {
-          alert("You missed a blue gate. score: "+Math.floor(counter));
+          // alert("You missed a blue gate. score: "+Math.floor(counter));
           counter=0;
         }
       }
@@ -87,6 +89,26 @@ function createGate() {
 }
 
 
-// Start creating gates when the user hits start
-setTimeout(createGate, currentAnimationDuration * 1000);
-setInterval(checkCollision, 10);
+// Start creating gates when the user clicks the screen
+document.addEventListener("click", gameLoop);
+
+function gameLoop() {
+  if (started == false) {
+    started = true;
+
+    //make click header and instructions disappear
+    const start = document.getElementById("start");
+    start.style.display = "none";
+
+    const instructions = document.getElementById("instructions");
+    setTimeout(() => {
+      instructions.style.display = "none";
+    }, 5000);
+
+    setTimeout(createGate, currentAnimationDuration * 1000);
+    setInterval(checkCollision, 10);
+  }
+
+  //else do nothing and let the game run
+}
+

@@ -41,6 +41,18 @@ body {
   animation: move 5s linear forwards;
 }
 
+.start {
+  position: absolute;
+  top: 40%;
+  z-index: 2;
+}
+
+.instructions {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+
 @keyframes move {
   from {
     top: 100%;
