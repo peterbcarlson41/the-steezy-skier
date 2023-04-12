@@ -1,0 +1,60 @@
+*{
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Nunito', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#game {
+  position: relative;
+  width: 50vw;
+  height: 80vh;
+  background-color: #FAF9F6;
+  cursor: none;
+  border: darkgrey;
+  border-radius: 10px;
+}
+
+#skier {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-color: green;
+  border-radius: 10%;
+  top: 30px;
+  left: 10px;
+}
+
+.gate {
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  background-color: blue;
+  animation: move 5s linear forwards;
+}
+
+@keyframes move {
+  from {
+    top: 100%;
+  }
+  to {
+    top: -50px;
+  }
+}
+
+h2{
+  padding-top: 5px;
+  text-align: center;
+}
+
+h1{
+  padding-bottom: 5px;
+}
