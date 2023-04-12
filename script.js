@@ -5,6 +5,7 @@ let blue = true;
 let gameOver = false;
 const initialAnimationDuration = 3; // seconds
 let started = false;
+const skierWidth = skier.offsetWidth;
 
 //set score to 0 intitially
 if (!gameOver) {
@@ -13,9 +14,9 @@ if (!gameOver) {
 
 game.addEventListener('mousemove', (event) => {
   const gameRect = game.getBoundingClientRect();
-  const x = event.clientX - gameRect.left + 10;
+  const x = event.clientX - gameRect.left + (gameRect.right/80);
 
-  if((event.clientX) < (gameRect.right - 70)) {
+  if((event.clientX) < (gameRect.right - (gameRect.right/40) - skierWidth)) {
     skier.style.left = `${x}px`;
   }
 });
@@ -55,10 +56,11 @@ function createGate() {
   const gate = document.createElement('div');
   gate.classList.add('gate');
   const gameRect = game.getBoundingClientRect();
-  const minDistanceFromEdge = 80; // minimum distance from the edge
+  const minDistanceFromEdge = gameRect.right/10; // minimum distance from the edge
 
   // Generate a random gate position on the left or right half of the screen
-  const gatePosition = blue ? Math.random() * (gameRect.width/2 - minDistanceFromEdge * 2 - 50) + minDistanceFromEdge : Math.random() * (gameRect.width/2 - minDistanceFromEdge * 2 - 50) + gameRect.width/2 + minDistanceFromEdge;
+  const gatePosition = Math.random() * (gameRect.width/2 - minDistanceFromEdge * 2) + (blue ? 0 : gameRect.width/2) + minDistanceFromEdge;
+
 
   gate.style.left = `${gatePosition}px`;
   gate.style.backgroundColor = blue ? 'blue' : 'red';

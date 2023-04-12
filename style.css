@@ -25,8 +25,8 @@ body {
 
 #skier {
   position: absolute;
-  width: 35px;
-  height: 35px;
+  width: 5%;
+  aspect-ratio: 1 / 1;
   background-color: green;
   border-radius: 10%;
   top: 30px;
@@ -35,8 +35,8 @@ body {
 
 .gate {
   position: absolute;
-  width: 30px;
-  height: 20px;
+  width: 5%;
+  aspect-ratio: 3 / 2;
   border-radius: 5%;
   background-color: blue;
   animation: move 5s linear forwards;
@@ -46,12 +46,15 @@ body {
   position: absolute;
   top: 40%;
   z-index: 2;
+  cursor: none;
 }
 
 .instructions {
   position: absolute;
   top: 50%;
   z-index: 2;
+  cursor: none;
+  
 }
 
 @keyframes move {
