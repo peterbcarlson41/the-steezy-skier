@@ -13,7 +13,7 @@ const RED = '#B22727';
 
 //set score to 0 intitially
 if (!gameOver) {
-  document.getElementById("scoreSpan").innerHTML = Math.floor(counter);
+  document.getElementById("scoreSpan").innerHTML = Math.round(counter);
 }
 
 game.addEventListener('mousemove', (event) => {
@@ -43,7 +43,7 @@ function checkCollision() {
   gates.forEach(gate => {
     const gateRect = gate.getBoundingClientRect();
     counter++;
-    document.getElementById("scoreSpan").innerHTML = Math.floor(counter + 1);
+    document.getElementById("scoreSpan").innerHTML = Math.round(counter + 1);
     if (skierRect.bottom >= gateRect.top && skierRect.top <= gateRect.bottom &&
         skierRect.right >= gateRect.left && skierRect.left <= gateRect.right) {
       // handle collision here, such as game over or score increment
