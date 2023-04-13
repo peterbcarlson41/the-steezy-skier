@@ -34,7 +34,6 @@ game.addEventListener('touchmove', (event) => {
 });
 
 
-
 function checkCollision() {
   const skierRect = skier.getBoundingClientRect();
   const gates = document.querySelectorAll('.gate');
