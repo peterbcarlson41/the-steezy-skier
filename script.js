@@ -1,5 +1,7 @@
 const game = document.getElementById('game');
 const skier = document.getElementById('skier');
+const start = document.getElementById('start');
+const instructions = document.getElementById('instructions');
 let counter = 0;
 let blue = true;
 let gameOver = false;
@@ -16,10 +18,13 @@ game.addEventListener('mousemove', (event) => {
   const gameRect = game.getBoundingClientRect();
   const x = event.clientX - gameRect.left + (gameRect.right/80);
 
+  console.log(x);
+
   if((event.clientX) < (gameRect.right - (gameRect.right/40) - skierWidth)) {
     skier.style.left = `${x}px`;
   }
 });
+
 
 function checkCollision() {
   const skierRect = skier.getBoundingClientRect();

@@ -21,6 +21,8 @@ body {
   cursor: none;
   border: darkgrey;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 #skier {
@@ -71,7 +73,6 @@ body {
   top: 50%;
   z-index: 2;
   cursor: none;
-  
 }
 
 @keyframes move {
