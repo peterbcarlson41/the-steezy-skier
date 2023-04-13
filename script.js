@@ -27,13 +27,13 @@ game.addEventListener('mousemove', (event) => {
 
 game.addEventListener('touchmove', (event) => {
   const gameRect = game.getBoundingClientRect();
-  const touch = event.touches[0];
-  const x = touch.clientX - gameRect.left + (gameRect.right/80);
+  const x = event.touches[0].clientX - gameRect.left + (gameRect.right/80);
 
-  if((touch.clientX) < (gameRect.right - (gameRect.right/40) - skierWidth)) {
+  if((event.touches[0].clientX) < (gameRect.right - (gameRect.right/40) - skierWidth)) {
     skier.style.left = `${x}px`;
   }
 });
+
 
 
 function checkCollision() {
