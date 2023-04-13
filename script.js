@@ -8,6 +8,8 @@ let gameOver = false;
 const initialAnimationDuration = 3; // seconds
 let started = false;
 const skierWidth = skier.offsetWidth;
+const BLUE = '#006E7F';
+const RED = '#B22727';
 
 //set score to 0 intitially
 if (!gameOver) {
@@ -48,12 +50,12 @@ function checkCollision() {
       endGame();
     }
     else {
-      if (gate.style.backgroundColor == "red") {
+      if (gate.style.backgroundColor == '#AF2413') {
         if (skierRect.bottom >= gateRect.top && skierRect.left <= gateRect.right && skierRect.top <= gateRect.bottom) {
           endGame();
         }
       }
-      if (gate.style.backgroundColor == "blue"){
+      if (gate.style.backgroundColor == '#2b62f4'){
         //if the gate is blue, the skier should be on the left side of the gate before the top of the gate passes the bottom of the skier
         if (skierRect.bottom >= gateRect.top && skierRect.right >= gateRect.left && skierRect.top <= gateRect.bottom) {
           endGame();
@@ -76,7 +78,7 @@ function createGate() {
 
 
   gate.style.left = `${gatePosition}px`;
-  gate.style.backgroundColor = blue ? 'blue' : 'red';
+  gate.style.backgroundColor = blue ? BLUE : RED;
 
   // Set the initial animation duration
   gate.style.animationDuration = `${currentAnimationDuration}s`;
